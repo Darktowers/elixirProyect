@@ -1,18 +1,39 @@
 defmodule Cards do
-  @moduledoc """
-  Documentation for Cards.
-  """
+  def create_deck do
+    values = ["Ace", "Two", "Three", "Four"]
+    suits = ["Spades", "Clubs", "Hearts", "Diamond"]
+    # cards =
+    #   for value <- values do
+    #     for suit <- suits do
+    #       "#{value} of #{suit}"
+    #     end
+    #   end
+    # List.flatten(cards)
+    for suit <- suits, value <- values do
+      "#{value} of #{suit}"
+    end
+  end
 
-  @doc """
-  Hello world.
+  def shuffle(deck) do
+    Enum.shuffle(deck)
+  end
 
-  ## Examples
+  def contains?(deck, card) do
+    Enum.member?(deck, card)
+  end
 
-      iex> Cards.hello()
-      :world
-
-  """
-  def hello do
-    "Test"
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
+  end
+  def save(deck, filename) do
+    binary = :erlang.term_to_binary(deck)
+    File.write!(filename, binary)
+  end
+  def load(filename) do
+    {status, binary} = File.read(filename)
+    case status do
+      :ok -> :erlang.binary_to_term(binary)
+      :error -> "That file doesn't exists"
+    end
   end
 end
