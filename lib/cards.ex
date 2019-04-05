@@ -1,9 +1,9 @@
 defmodule Cards do
   @moduledoc """
-   Provee metodos para la manipulacion de barajas
+    Provee metodos para la manipulacion de barajas
   """
   @doc """
-   retorna una lista de strings que representan una baraja
+    retorna una lista de strings que representan una baraja
   """
   def create_deck do
     values = ["Ace", "Two", "Three", "Four"]
@@ -37,17 +37,17 @@ defmodule Cards do
   @doc """
     Retorna una dupla con la mano deseada de una baraja
   ## Ejemplos
-      iex> deck = Cards.create_deck
-      iex> {hand, deck} = Cards.deal(deck, 1)
-      iex> hand
-      ["Ace of spades"]
+        iex> deck = Cards.create_deck
+        iex> {hand, deck} = Cards.deal(deck, 1)
+        iex> hand
+        ["Ace of spades"]
   """
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
   end
 
   @doc """
-   Guarda un archivo con las cartas deseadas
+    Guarda un archivo con las cartas deseadas
   """
   def save(deck, filename) do
     binary = :erlang.term_to_binary(deck)
@@ -56,7 +56,7 @@ defmodule Cards do
   end
 
   @doc """
-   Carga un archivo con las cartas guardadas
+    Carga un archivo con las cartas guardadas
   """
   def load(filename) do
     # {status, binary} = File.read(filename)
@@ -71,8 +71,8 @@ defmodule Cards do
   end
 
   @doc """
-   Crea una mano dependiendo el tamaño enviado lo desordena y retorna una
-   dupla con la mano y el restante de cartas
+    Crea una mano dependiendo el tamaño enviado lo desordena y retorna una
+    dupla con la mano y el restante de cartas
   """
   def create_hand(hand_size) do
     # Pipes
