@@ -35,7 +35,12 @@ defmodule Cards do
   end
 
   @doc """
-   Retorna una dupla con la mano deseada de una baraja
+    Retorna una dupla con la mano deseada de una baraja
+  ## Ejemplos
+      iex> deck = Cards.create_deck
+      iex> {hand, deck} = Cards.deal(deck, 1)
+      iex> hand
+      ["Ace of spades"]
   """
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
